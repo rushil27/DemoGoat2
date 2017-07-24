@@ -1,7 +1,7 @@
 import { NgModule }                              from '@angular/core';
 import { HttpModule }                            from '@angular/http';
 import { SharedModule }                          from '../shared/shared.module';
-import { CoreRoutingModule }                     from './core-routing.module';
+//import { CoreRoutingModule }                     from './core-routing.module';
 
 import { Http, XHRBackend, RequestOptions }      from '@angular/http';
 
@@ -26,9 +26,9 @@ export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions)
 }
 
 @NgModule({
-  imports:      [ SharedModule, CoreRoutingModule ],
+  imports:      [ SharedModule ],
   declarations: [ CoreComponent, HeaderComponent, FooterComponent ],
-  exports:      [ CoreRoutingModule, HttpModule, CoreComponent, HeaderComponent, FooterComponent ],
+  exports:      [ HttpModule, CoreComponent, HeaderComponent, FooterComponent ],
   providers: 	[
   	{
   	  provide: Http,

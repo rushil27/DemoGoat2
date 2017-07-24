@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef } from '@angular/core';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 import { ErrorHandlerActions } from '../../redux/actions/error/errorHandler.actions';
 import { UserFormActions } from '../../redux/actions/userForm/userForm.actions';
@@ -20,6 +20,7 @@ export class Login {
   public staticAlertClosed = true;
 
   constructor(fb: FormBuilder,
+    private ref: ChangeDetectorRef,
     public userActions: UserActions, private router: Router) {
 
     this.form = fb.group({
@@ -35,10 +36,11 @@ export class Login {
     this.submitted = true;
     if (this.form.valid) {
       this.userActions.login(this.form).subscribe(x => {
-        this.router.navigate(['/profile']);
+        this.router.navigate(['/pages/dashboard']);
       }, err => {
-        setTimeout(() => { console.log('Here 1', this.staticAlertClosed);this.staticAlertClosed = true; console.log('Here', this.staticAlertClosed);}, 2000);
+        setTimeout(() => { console.log('Here 1', this.staticAlertClosed); this.staticAlertClosed = true; console.log('Here', this.staticAlertClosed); }, 2000);
         this.staticAlertClosed = false;
+        this.ref.detectChanges();
       });
     }
   }

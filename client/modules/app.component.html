@@ -10,9 +10,7 @@ App component
 **    <router-outlet> is where all the router views will render.
 -->
 
-<div>
-    <ba-page-top></ba-page-top>
+<main [class.menu-collapsed]="isMenuCollapsed" baThemeRun>
+	<div class="additional-bg"></div>
 	<router-outlet></router-outlet>
-	<footer-section></footer-section>
-	<core-section></core-section>
-</div>
+</main>

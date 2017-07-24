@@ -32,14 +32,27 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReduxModule } from '../redux/redux.module';
 
+import { routing } from './app.routing';
+import { HttpModule } from '@angular/http';
+import { Http, XHRBackend, RequestOptions } from '@angular/http';
+
+import { HttpIntercept } from './core/services/auth/auth.service';
+import { UserService } from './core/services/user/user.service';
+
+import { ErrorHandlerActions } from '../redux/actions/error/errorHandler.actions';
+import { UserFormActions } from '../redux/actions/userForm/userForm.actions';
+import { UserActions } from '../redux/actions/user/user.actions';
+import { SEOActions } from '../redux/actions/seo/seo.actions';
+
+
 import { CoreModule } from './core/core.module';
-import { HomeModule } from './home/home.module';
-import { UserProfileModule } from './user-profile/user-profile.module';
 import { Four0FourModule } from './404/404.module';
 import { LoginModule } from './login/login.module';
 import { RegisterModule } from './register/register.module';
 import { ForgotPasswordModule } from './forgot-password/forgot-password.module';
 import { ResetPasswordModule } from './reset-password/reset-password.module';
+import { PagesModule } from './pages/pages.module';
+
 import { NgaModule } from '../theme/nga.module';
 import { GlobalState } from '../global.state';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -47,10 +60,24 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthGuard } from './_guards/index';
 import { RecaptchaModule } from 'ng2-recaptcha';
 
+export function httpFactory(backend: XHRBackend, defaultOptions: RequestOptions) {
+  return new HttpIntercept(backend, defaultOptions);
+}
+
 // Application wide providers
 const APP_PROVIDERS = [
   AuthGuard,
-  GlobalState
+  GlobalState,
+  ErrorHandlerActions,
+  UserActions,
+  UserFormActions,
+  SEOActions,
+  {
+    provide: Http,
+    useFactory: httpFactory,
+    deps: [XHRBackend, RequestOptions]
+  },
+  UserService 
 ];
 
 /*
@@ -65,10 +92,10 @@ NgModule
   //imports: this object imports helper modules which are children in the module tree
   imports: [
     BrowserModule,
+    HttpModule,
     ReduxModule,
-    CoreModule,
-    HomeModule,
-    UserProfileModule,
+    //CoreModule,
+    PagesModule,
     Four0FourModule,
     LoginModule,
     RegisterModule,
@@ -76,7 +103,8 @@ NgModule
     ResetPasswordModule,
     NgaModule.forRoot(),
     NgbModule.forRoot(),
-    RecaptchaModule.forRoot()
+    RecaptchaModule.forRoot(),
+    routing
   ],
   //declarations: this object imports all child components which are used in this module
   declarations: [AppComponent],
