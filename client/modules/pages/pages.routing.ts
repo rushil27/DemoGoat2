@@ -6,23 +6,17 @@ import { AuthGuard } from '../_guards/index';
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };
-import { Dashboard } from './dashboard/dashboard.component';
-import { Editors } from './editors/editors.component';
-export const routes: Routes = [
+import { DashboardModule } from './dashboard/dashboard.module';
+import { PaReportsModule } from './reports/reports.module';
 
+export const routes: Routes = [
   {
     path: 'pages',
     component: Pages,
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard] },
-      { path: 'dashboard', component: Dashboard, canActivate: [AuthGuard] },
-      { path: 'editors', component: Editors, canActivate: [AuthGuard] },
-      { path: 'components', loadChildren: './components/components.module#ComponentsModule' },
-      { path: 'charts', loadChildren: './charts/charts.module#ChartsModule' },
-      { path: 'ui', loadChildren: './ui/ui.module#UiModule' },
-      { path: 'forms', loadChildren: './forms/forms.module#FormsModule' },
-      { path: 'tables', loadChildren: './tables/tables.module#TablesModule' },
-      { path: 'maps', loadChildren: './maps/maps.module#MapsModule' },
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full', canActivate: [AuthGuard], canLoad: [AuthGuard] },
+      { path: 'dashboard', loadChildren: () => DashboardModule },
+      { path: 'reports', loadChildren: () => PaReportsModule }
     ]
   }
 ];

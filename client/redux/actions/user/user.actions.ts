@@ -91,6 +91,7 @@ export class UserActions {
       return this.userService.login(lf.value.email, lf.value.password)
         .map(user => {
           console.log('user: ', user);
+          localStorage.setItem('currentUser', JSON.stringify({ username: user }));
           // once a response comes change the state to reflect user info
           this.ngRedux.dispatch({
             type: UserActions.LOGIN_USER,
@@ -109,6 +110,8 @@ export class UserActions {
   logout(): void {
     // simply delete the cached token
     Cookie.delete('token');
+    localStorage.removeItem('currentUser');
+        
     // and delete the user object in the state
     this.ngRedux.dispatch({ type: UserActions.LOGOUT_USER });
     this.router.navigate(['/']);

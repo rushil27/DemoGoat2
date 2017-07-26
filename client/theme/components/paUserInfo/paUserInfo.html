@@ -1,5 +1,5 @@
 <a class="profile-toggle-link dropdown-toggle user-block-header" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
-      Hi, <span [innerHTML]="(user$ | async).getIn(['userItem', 'username'])"></span> <!-- {{ ( 'vstricker' | paUserInfo ) }} -->
+      Hi, <span [innerHTML]="userinfo.username.username"></span> <!-- {{ ( 'vstricker' | paUserInfo ) }} -->
       </a>
 <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
   <li class="dropdown-item"><a href routerLink="/profile"><i class="fa fa-user"></i>Profile</a></li>

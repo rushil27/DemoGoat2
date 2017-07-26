@@ -5,7 +5,8 @@ import { AuthGuard } from './_guards/index';
 export const routes: Routes = [
     { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'reset/:token', redirectTo: 'reset/:token', pathMatch: 'full' },
-    { path: '**', redirectTo: 'pages/dashboard', canActivate: [AuthGuard] },
+    { path: 'pages', redirectTo: 'pages', canActivate:[AuthGuard], canLoad: [AuthGuard] },
+    { path: '**', redirectTo: 'PageNotFound' },
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(routes, { useHash: true });

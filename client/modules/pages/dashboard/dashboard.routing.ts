@@ -6,7 +6,7 @@ import { AuthGuard } from '../../_guards/index';
 // noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
-    path: 'dashboard',
+    path: '',
     component: Dashboard,
     children: [
       //{ path: 'treeview', component: TreeViewComponent }

@@ -8,14 +8,10 @@ import { AppTranslationModule } from '../../app.translation.module';
 import { Pages } from './pages.component';
 
 import { DashboardModule } from './dashboard/dashboard.module';
-import { FormsModule } from './forms/forms.module';
-import { UiModule } from './ui/ui.module';
-import { MapsModule } from './maps/maps.module';
-import { EditorsModule } from './editors/editors.module';
-import { ChartsModule } from './charts/charts.module';
+import { PaReportsModule } from './reports/reports.module';
 
 @NgModule({
-  imports: [CommonModule, AppTranslationModule, NgaModule, routing, DashboardModule, EditorsModule ],
+  imports: [CommonModule, AppTranslationModule, NgaModule, routing, DashboardModule, PaReportsModule],
   declarations: [Pages]
 })
 export class PagesModule {

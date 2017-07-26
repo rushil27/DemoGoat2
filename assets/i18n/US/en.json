@@ -22,6 +22,8 @@
     },
     "menu": {
       "dashboard": "Dashboard",
+      "report": "Report",
+      "report_summary": "Report Summary",
       "editors": "Editors",
       "ck_editor": "CKEditor",
       "components": "Components",
