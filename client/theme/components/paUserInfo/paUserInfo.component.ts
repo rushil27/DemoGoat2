@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-
+import { UserActions } from '../../../redux/actions/user/user.actions';
 import { PaUserInfoService } from './paUserInfo.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { PaUserInfoService } from './paUserInfo.service';
 
 export class PaUserInfoComponent {
   public userinfo: any;
-  constructor(private _paUserInfoService: PaUserInfoService) {
+  constructor(private _paUserInfoService: PaUserInfoService, private userActions: UserActions) {
     this.userinfo = JSON.parse(localStorage.getItem('currentUser'));
   }
 }

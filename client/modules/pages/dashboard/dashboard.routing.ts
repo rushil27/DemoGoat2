@@ -5,14 +5,7 @@ import { ModuleWithProviders } from '@angular/core';
 import { AuthGuard } from '../../_guards/index';
 // noinspection TypeScriptValidateTypes
 export const routes: Routes = [
-  {
-    path: '',
-    component: Dashboard,
-    children: [
-      //{ path: 'treeview', component: TreeViewComponent }
-    ],
-    canActivate: [AuthGuard]
-  }
+  { path: '', component: Dashboard, canLoad: [AuthGuard], canActivate: [AuthGuard] }
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forChild(routes);

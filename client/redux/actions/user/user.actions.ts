@@ -114,7 +114,7 @@ export class UserActions {
         
     // and delete the user object in the state
     this.ngRedux.dispatch({ type: UserActions.LOGOUT_USER });
-    this.router.navigate(['/']);
+    this.router.navigate(['/login']);
   }
 
   // Setting lf to type FormGroup causes issues
