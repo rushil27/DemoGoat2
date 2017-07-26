@@ -564,7 +564,7 @@ function forgot(req, res, next) {
                 secure: true,
                 auth: {
                     user: 'rushil27shah@gmail.com',
-                    pass: 'r!dhwani9428355390'
+                    pass: 'xxxxxxxxxxxxxxxx'
                 }
             });
             var mailOptions = {
