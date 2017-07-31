@@ -131,7 +131,9 @@ export class UserActions {
             type: UserActions.REGISTER_USER,
             payload: user
           });
-          this.router.navigate(['/profile']);
+          console.log('user: ', user);
+          localStorage.setItem('currentUser', JSON.stringify({ username: user }));
+          this.router.navigate(['/pages/dashboard']);
         }, err => {
           this.invalidateUser(err);
           this.errorHandler.showError(err.message);

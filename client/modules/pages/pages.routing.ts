@@ -8,8 +8,18 @@ import { AuthGuard } from '../_guards/index';
 // export function loadChildren(path) { return System.import(path); };
 import { DashboardModule } from './dashboard/dashboard.module';
 import { PaReportsModule } from './reports/reports.module';
+import { LoginModule } from '../login/login.module';
+import { RegisterModule } from '../register/register.module';
 
 export const routes: Routes = [
+   {
+    path: 'login',
+    loadChildren: () => LoginModule
+  },
+  {
+    path: 'register',
+    loadChildren: () => RegisterModule
+  },
   {
     path: 'pages',
     component: Pages,

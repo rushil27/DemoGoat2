@@ -7,11 +7,8 @@ import { AppTranslationModule } from '../../app.translation.module';
 
 import { Pages } from './pages.component';
 
-import { DashboardModule } from './dashboard/dashboard.module';
-import { PaReportsModule } from './reports/reports.module';
-
 @NgModule({
-  imports: [CommonModule, AppTranslationModule, NgaModule, routing, DashboardModule, PaReportsModule],
+  imports: [CommonModule, AppTranslationModule, NgaModule, routing],
   declarations: [Pages]
 })
 export class PagesModule {

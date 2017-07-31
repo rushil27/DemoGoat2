@@ -169,7 +169,7 @@ export function forgot(req, res, next) {
         secure: true, // secure:true for port 465, secure:false for port 587
         auth: {
           user: 'rushil27shah@gmail.com',
-          pass: 'xxxxxxxxxxxxxxxx'
+          pass: 'r!dhwani9428355390'
         }
       });
       var mailOptions = {

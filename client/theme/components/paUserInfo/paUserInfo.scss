@@ -215,15 +215,15 @@
       border: none;
       text-decoration: none;
       color: $dropdown-text;
-      padding: 4px 16px 4px 20px;
+      padding: 4px 10px 4px 10px;
       &.signout {
-        border-top: 1px solid $default;
+        //border-top: 1px solid $default;
       }
       i {
         margin-right: 10px;
       }
       &:hover {
-        background: #f4fcff;
+        background: transparent;
       }
     }
     i.dropdown-arr {

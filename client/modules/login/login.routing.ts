@@ -6,7 +6,7 @@ import { ModuleWithProviders } from '@angular/core';
 // noinspection TypeScriptValidateTypes
 export const routes: Routes = [
   {
-    path: 'login',
+    path: '',
     component: Login
   }
 ];

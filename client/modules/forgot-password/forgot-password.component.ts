@@ -30,6 +30,7 @@ export class ForgotPassword {
   }
 
   onSubmit(values: Object) {
+    this.staticAlertClosed = true;
     this.isMailSent = false;
     this.submitted = true;
     if (this.form.valid) {
@@ -37,10 +38,11 @@ export class ForgotPassword {
         if (res.data) {
           this.user = res.data;
           this.isMailSent = true;
+          this.submitted = false;
         } else {
           this.staticAlertClosed = false;
-          alert(this.staticAlertClosed);
           this.errMsg = res.err;
+          this.submitted = false;
         }
         this.ref.detectChanges();
       }, err => {
